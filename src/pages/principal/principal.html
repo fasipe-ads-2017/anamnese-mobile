@@ -1,0 +1,19 @@
+<ion-content padding>
+  <img src="assets/imgs/logotopo.png" class="img logo" />
+
+  <ion-list no-lines>
+    <ion-item>
+      <h1>Anamnese Fisioterapia</h1>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="listarPacientes()">
+    <ion-icon name="people"></ion-icon>
+    <span>Pacientes</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="sair()">
+    <ion-icon name="exit"></ion-icon>
+    <span>Sair</span>
+  </button>
+</ion-content>

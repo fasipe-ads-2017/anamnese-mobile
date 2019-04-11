@@ -1,5 +1,7 @@
 {
   "name": "anamnese-fisioterapia-fasipe",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

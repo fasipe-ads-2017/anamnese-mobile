@@ -1,14 +1,26 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <img src="assets/imgs/logotopo.png" class="img logo" />
+
+  <ion-list no-lines>
+
+    <ion-item>
+      <h2>Anamnese Fisioterapia</h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input #email type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input #senha type="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="entrar()">Entrar</button>
+  <button ion-button block color="secondary" (click)="esqueciASenha()">Esqueci minha senha</button>
+
 </ion-content>

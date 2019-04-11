@@ -1,3 +1,5 @@
+import { EsqueciASenhaPageModule } from './../pages/esqueci-a-senha/esqueci-a-senha.module';
+import { PrincipalPageModule } from './../pages/principal/principal.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -14,7 +16,11 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: 'md'
+    }),
+    PrincipalPageModule,
+    EsqueciASenhaPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
