@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cadastro de Pacientes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nome do paciente</ion-label>
+      <ion-input [readonly]="!editar" [(ngModel)]="paciente.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-card>
+        <img class="img circle" [src]="paciente.foto" />
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cpf do paciente</ion-label>
+      <ion-input type="tel" [readonly]="!editar" [(ngModel)]="paciente.cpf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Rg do paciente</ion-label>
+      <ion-input type="tel" [readonly]="!editar" [(ngModel)]="paciente.rg"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sexo</ion-label>
+      <ion-select [(ngModel)]="paciente.sexo" [disabled]="!editar" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="Feminino">Feminino</ion-option>
+        <ion-option value="Masculino">Masculino</ion-option>
+        <ion-option value="Outros">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="tel" [readonly]="!editar" [(ngModel)]="paciente.telefone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de nascimento</ion-label>
+      <ion-datetime cancelText="Cancelar" doneText="Confirmar" [disabled]="!editar" [(ngModel)]="paciente.dataNascimento" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Responsável</ion-label>
+      <ion-input type="text" [readonly]="!editar" [(ngModel)]="paciente.responsavel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CEP</ion-label>
+      <ion-input [maxlength]="8" type="tel" [readonly]="!editar" [(ngModel)]="paciente.cep"></ion-input>
+
+      <button ion-button large item-right clear (click)="buscarCep()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Endereço</ion-label>
+      <ion-input type="text" [readonly]="!editar" [(ngModel)]="paciente.endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Bairro</ion-label>
+      <ion-input type="text" [readonly]="!editar" [(ngModel)]="paciente.bairro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cidade</ion-label>
+      <ion-input type="text" [readonly]="!editar" [(ngModel)]="paciente.cidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>UF</ion-label>
+      <ion-select [(ngModel)]="paciente.uf" [disabled]="!editar" okText="Confirmar" cancelText="Cancelar">
+        <ion-option *ngFor="let uf of ufs" [value]="uf">{{ uf }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button block color="primary" item-end icon-start (click)="salvar()" class="btn-salvar">
+        <ion-icon name="save"></ion-icon>
+        <span>Salvar</span>
+      </button> </ion-item>
+  </ion-list>
+</ion-content>

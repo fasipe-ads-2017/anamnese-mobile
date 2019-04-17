@@ -1,3 +1,4 @@
+import { BuscarPacientePage } from './../buscar-paciente/buscar-paciente';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from './../home/home'
@@ -21,7 +22,7 @@ export class PrincipalPage {
   }
 
   listarPacientes() {
-    //
+    this.navCtrl.push(BuscarPacientePage);
   }
 
 }

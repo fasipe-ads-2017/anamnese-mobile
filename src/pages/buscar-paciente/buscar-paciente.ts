@@ -1,12 +1,8 @@
+import { PacienteCadastroPage } from './../paciente-cadastro/paciente-cadastro';
+import { BuscarPacientePorCpfPage } from './../buscar-paciente-por-cpf/buscar-paciente-por-cpf';
+import { BuscarPacientePorNomePage } from './../buscar-paciente-por-nome/buscar-paciente-por-nome';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the BuscarPacientePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +11,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BuscarPacientePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuscarPacientePage');
   }
 
+  buscarPorNome() {
+    this.navCtrl.push(BuscarPacientePorNomePage);
+  }
+
+  buscarPorCpf() {
+    this.navCtrl.push(BuscarPacientePorCpfPage);
+  }
+
+  novoPaciente() {
+    this.navCtrl.push(PacienteCadastroPage);
+  }
+
+  voltar() {
+    this.navCtrl.pop();
+  }
 }

@@ -1,5 +1,4 @@
-page-buscar-paciente {
-
+page-buscar-paciente-por-cpf {
   .btn-voltar {
     margin-top: 20px;
   }
@@ -11,5 +10,13 @@ page-buscar-paciente {
     width: 100%;
     text-align: left;
     font-size: 2rem !important;
+  }
+
+  .btn-nova-busca {
+    background-color: purple;
+  }
+
+  .btn-editar {
+    background-color: orange;
   }
 }

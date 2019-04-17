@@ -1,3 +1,7 @@
+import { PacienteCadastroPageModule } from './../pages/paciente-cadastro/paciente-cadastro.module';
+import { BuscarPacientePorNomePageModule } from '../pages/buscar-paciente-por-nome/buscar-paciente-por-nome.module';
+import { BuscarPacientePorCpfPageModule } from './../pages/buscar-paciente-por-cpf/buscar-paciente-por-cpf.module';
+import { BuscarPacientePageModule } from './../pages/buscar-paciente/buscar-paciente.module';
 import { EsqueciASenhaPageModule } from './../pages/esqueci-a-senha/esqueci-a-senha.module';
 import { PrincipalPageModule } from './../pages/principal/principal.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PacienteProvider } from '../providers/paciente/paciente';
+import { UrlProvider } from '../providers/url/url';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { HomePage } from '../pages/home/home';
       mode: 'md'
     }),
     PrincipalPageModule,
-    EsqueciASenhaPageModule
+    EsqueciASenhaPageModule,
+    BuscarPacientePageModule,
+    BuscarPacientePorNomePageModule,
+    BuscarPacientePorCpfPageModule,
+    PacienteCadastroPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,7 +40,9 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PacienteProvider,
+    UrlProvider
   ]
 })
 export class AppModule {}

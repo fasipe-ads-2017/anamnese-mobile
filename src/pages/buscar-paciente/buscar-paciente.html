@@ -1,15 +1,30 @@
-<!--
-  Generated template for the BuscarPacientePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>buscar-paciente</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
 
+  <ion-list no-lines>
+    <ion-item>
+      <h2>
+        <ion-icon name="people"></ion-icon> Buscar Pacientes
+      </h2>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="buscarPorNome()">
+    <ion-icon name="people"></ion-icon>
+    <span>Buscar por nome</span>
+  </button>
+
+  <button ion-button block color="secondary" item-end icon-start (click)="buscarPorCpf()">
+    <ion-icon name="card"></ion-icon>
+    <span>Buscar por Cpf</span>
+  </button>
+
+  <button ion-button block color="dark" item-end icon-start (click)="novoPaciente()">
+    <ion-icon name="person-add"></ion-icon>
+    <span>Novo Paciente</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
 </ion-content>

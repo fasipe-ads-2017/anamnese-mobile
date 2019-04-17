@@ -1,0 +1,100 @@
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <h2>
+        <ion-icon name="people"></ion-icon> Buscar Paciente por Cpf
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-input #cpfInput maxlength="11" max="11" [(ngModel)]="cpfPaciente" type="tel" name="cpf" placeholder="Informe o CPF para pesquisar"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="mensagemErro">
+      <ion-label color="danger">{{mensagemErro}}</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- Dados -->
+  <ion-list *ngIf="paciente">
+    <ion-item>
+      <ion-label stacked>Nome do paciente</ion-label>
+      <ion-input [disabled]="true" [(ngModel)]="paciente.nome"></ion-input>
+
+      <button ion-button large item-right clear (click)="showFoto = !showFoto">
+        <ion-icon *ngIf="!showFoto" name="camera"></ion-icon>
+        <ion-icon *ngIf="showFoto" name="eye-off"></ion-icon>
+      </button>
+    </ion-item>
+
+    <ion-item *ngIf="showFoto">
+      <ion-card>
+        <img class="img circle" [src]="paciente.foto" />
+      </ion-card>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cpf do paciente</ion-label>
+      <ion-input type="tel" [disabled]="true" [(ngModel)]="paciente.cpf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Rg do paciente</ion-label>
+      <ion-input type="tel" [disabled]="true" [(ngModel)]="paciente.rg"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sexo</ion-label>
+      <ion-select [(ngModel)]="paciente.sexo" [disabled]="true" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="Feminino">Feminino</ion-option>
+        <ion-option value="Masculino">Masculino</ion-option>
+        <ion-option value="Outros">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="tel" [disabled]="true" [(ngModel)]="paciente.telefone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de nascimento</ion-label>
+      <ion-datetime cancelText="Cancelar" doneText="Confirmar" [disabled]="true" [(ngModel)]="paciente.dataNascimento" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- Fim dados paciente -->
+
+  <button *ngIf="!paciente" ion-button block color="primary" item-end icon-start (click)="buscar()">
+    <ion-icon name="search"></ion-icon>
+    <span>Buscar</span>
+  </button>
+
+  <button *ngIf="cpfPaciente" ion-button block item-end icon-start (click)="novaBusca()" class="btn-nova-busca">
+    <ion-icon name="trash"></ion-icon>
+    <span>Nova busca</span>
+  </button>
+
+  <button *ngIf="paciente" ion-button block item-end icon-start (click)="editar()" class="btn-editar">
+    <ion-icon name="create"></ion-icon>
+    <span>Editar dados do paciente</span>
+  </button>
+
+  <button *ngIf="paciente" ion-button block item-end icon-start (click)="historico()" class="btn-historico">
+    <ion-icon name="hourglass"></ion-icon>
+    <span>Ver histórico do paciente</span>
+  </button>
+
+  <button *ngIf="paciente" ion-button block item-end icon-start color="secondary" (click)="novaAnamnese()" class="btn-nova-anamnese">
+    <ion-icon name="clipboard"></ion-icon>
+    <span>Nova anamnese</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
+
+</ion-content>
