@@ -17,7 +17,7 @@ export class BuscarPacientePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscarPacientePage');
+
   }
 
   buscarPorNome() {

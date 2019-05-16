@@ -1,11 +1,11 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Cadastro de Pacientes</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
   <ion-list>
+
+    <ion-item>
+      <h2>
+        <ion-icon name="people"></ion-icon> Cadastro do Paciente
+      </h2>
+    </ion-item>
 
     <ion-item>
       <ion-label stacked>Nome do paciente</ion-label>
@@ -13,9 +13,18 @@
     </ion-item>
 
     <ion-item>
-      <ion-card>
-        <img class="img circle" [src]="paciente.foto" />
+      <ion-card *ngIf="foto.foto">
+        <img class="img circle" [src]="foto.foto" />
       </ion-card>
+      <button ion-button icon-start block color="tertiary" *ngIf="editar" (click)="tirarFoto()">
+        <ion-icon name="camera"></ion-icon>
+        Tirar foto
+      </button>
+
+      <button ion-button icon-start block color="danger" *ngIf="editar && foto.foto" (click)="limparFoto()">
+        <ion-icon name="trash"></ion-icon>
+        Limpar foto
+      </button>
     </ion-item>
 
     <ion-item>
@@ -83,11 +92,16 @@
         <ion-option *ngFor="let uf of ufs" [value]="uf">{{ uf }}</ion-option>
       </ion-select>
     </ion-item>
-
-    <ion-item>
-      <button ion-button block color="primary" item-end icon-start (click)="salvar()" class="btn-salvar">
-        <ion-icon name="save"></ion-icon>
-        <span>Salvar</span>
-      </button> </ion-item>
   </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="salvar()" class="btn-salvar">
+    <ion-icon name="save"></ion-icon>
+    <span>Salvar</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
+
 </ion-content>

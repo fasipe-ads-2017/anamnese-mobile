@@ -2,8 +2,8 @@ import { Usuario } from './usuario.model';
 import { Paciente } from "./paciente.model";
 
 export class Formulario {
-  id?: number;
-  paciente?: Paciente;
+  _id?: string;
+  _idPaciente?: string;
   responsavel?: Usuario;
   data?: string;
 
@@ -11,6 +11,12 @@ export class Formulario {
   frequenciaCardiaca?: number;
   frequenciaRespiratoria?: number;
   temperatura?: number;
+
+  pressaoArterialString?: string;
+  frequenciaCardiacaString?: string;
+  frequenciaRespiratoriaString?: string;
+  temperaturaString?: string
+
   auscultaCardiaca?: string;
   auscultaPulmonar?: string;
 

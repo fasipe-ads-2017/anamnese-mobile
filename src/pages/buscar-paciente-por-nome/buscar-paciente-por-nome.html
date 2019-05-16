@@ -1,15 +1,40 @@
-<!--
-  Generated template for the BuscarPacientePorNomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>buscar-paciente-por-nome</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <h2>
+        <ion-icon name="people"></ion-icon> Buscar Paciente por Nome
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-input #nomeInput [(ngModel)]="nomePaciente" type="text" name="nomePaciente" placeholder="Informe o nome para pesquisar (pelo menos 3 caracteres)"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="buscar()">
+    <ion-icon name="search"></ion-icon>
+    <span>Buscar</span>
+  </button>
+
+  <button *ngIf="nomePaciente" ion-button block item-end icon-start (click)="novaBusca()" class="btn-nova-busca">
+    <ion-icon name="trash"></ion-icon>
+    <span>Nova busca</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
+
+  <hr />
+
+  <ion-list no-lines>
+    <ion-item *ngFor="let paciente of pacientes">
+      <h2>{{ paciente.nome }}</h2>
+      <p>{{ paciente.dataNascimento | date: 'dd/MM/yyyy' }}</p>
+      <button ion-button clear item-end (click)="visualizar(paciente)">Visualizar</button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

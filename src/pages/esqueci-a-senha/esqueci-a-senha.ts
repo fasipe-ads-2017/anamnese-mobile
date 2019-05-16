@@ -19,7 +19,7 @@ export class EsqueciASenhaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EsqueciASenhaPage');
+
   }
 
 }

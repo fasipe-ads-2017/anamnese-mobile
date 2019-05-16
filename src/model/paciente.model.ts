@@ -1,5 +1,5 @@
 export class Paciente {
-  id?: number;
+  _id?: string;
   nome?: string;
   cpf?: string;
   rg?: string;
@@ -13,6 +13,9 @@ export class Paciente {
   bairro?: string;
   cidade?: string;
   uf?: string;
+}
 
+export class Foto {
+  _id?: string;
   foto?: string;
 }

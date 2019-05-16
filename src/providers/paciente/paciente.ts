@@ -21,18 +21,61 @@ export class PacienteProvider {
   /**
    * Busca um paciente pelo CPF.
    * @param cpf Cpf do Paciente
+   * @returns Paciente encontrado.
    */
-  buscarPorCpf(cpf: number): Observable<Paciente> {
-    return this.http.get(this.url.get() + '/api/paciente/porCpf/' + cpf);
+  buscarPorCpf(cpf: string): Observable<Paciente> {
+    return this.http.get<Paciente>(`${this.url.get()}/paciente?cpf=${cpf}`);
   }
 
   /**
    * Busca um paciente pelo nome.
    * @param nome Nome do paciente
-   * @param startFrom Começar pelo número x da lista (usado para paginação)
+   * @param pageNumber Número da página
+   * @returns Lista de pacientes encontrados.
    */
-  buscarPorNome(nome: string, startFrom: number): Observable<Paciente[]> {
-    return this.http.get<Paciente[]>(this.url.get() + '/api/paciente/porNome/' + nome + '/' + startFrom);
+  buscarPorNome(nome: string, pageNumber: number): Observable<Paciente[]> {
+    return this.http.get<Paciente[]>(`${this.url.get()}/paciente?nome=${nome}&page=${pageNumber}`);
   }
 
+  /**
+   * Busca um paciente pelo Id.
+   * @param id  Id do paciente
+   * @returns Paciente encontrado.
+   */
+  buscarPorId(id: string) {
+    return this.http.get<Paciente>(`${this.url.get()}/paciente?_id=${id}`);
+  }
+
+  /**
+   * Atualiza os dados do paciente
+   * @param paciente dados do paciente
+   */
+  atualizar(paciente: Paciente): Observable<any> {
+    return this.http.put(`${this.url.get()}/paciente`, paciente);
+  }
+
+  /**
+   * Insere um novo paciente
+   * @param paciente dados do paciente
+   */
+  inserir(paciente: Paciente): Observable<any> {
+    return this.http.post(`${this.url.get()}/paciente`, paciente);
+  }
+
+  /**
+   * Atualiza a foto do paciente
+   * @param paciente Paciente
+   * @param foto Foto do paciente em base 64
+   */
+  atualizarFoto(paciente: Paciente, foto: string) {
+    return this.http.post(`${this.url.get()}/foto`, { _id: paciente._id, foto: foto });
+  }
+
+  /**
+   * Busca a foto de um paciente
+   * @param paciente Paciente para buscar a foto
+   */
+  buscarFoto(paciente: Paciente): Observable<any> {
+    return this.http.get(`${this.url.get()}/foto?_id=${paciente._id}`);
+  }
 }

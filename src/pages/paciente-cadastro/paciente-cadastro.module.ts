@@ -10,4 +10,4 @@ import { PacienteCadastroPage } from './paciente-cadastro';
     IonicPageModule.forChild(PacienteCadastroPage),
   ],
 })
-export class PacienteCadastroPageModule {}
+export class PacienteCadastroPageModule { }

@@ -7,9 +7,19 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button block color="primary" item-end icon-start (click)="listarPacientes()">
+  <button ion-button block color="primary" item-end icon-start (click)="buscarPorNome()">
     <ion-icon name="people"></ion-icon>
-    <span>Pacientes</span>
+    <span>Buscar por nome</span>
+  </button>
+
+  <button ion-button block color="secondary" item-end icon-start (click)="buscarPorCpf()">
+    <ion-icon name="card"></ion-icon>
+    <span>Buscar por Cpf</span>
+  </button>
+
+  <button ion-button block color="dark" item-end icon-start (click)="novoPaciente()">
+    <ion-icon name="person-add"></ion-icon>
+    <span>Novo Paciente</span>
   </button>
 
   <button ion-button block color="danger" item-end icon-start (click)="sair()">

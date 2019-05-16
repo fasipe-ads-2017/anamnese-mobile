@@ -1,4 +1,11 @@
-page-historico-paciente {
+page-paciente-preview {
+  .btn-voltar {
+    margin-top: 20px;
+  }
+
+  .btn-historico {
+    background-color: #fb8c00;
+  }
 
   h2 {
     padding-top: 30px;
@@ -7,15 +14,5 @@ page-historico-paciente {
     width: 100%;
     text-align: left;
     font-size: 2rem !important;
-  }
-
-  ion-item {
-    h3 {
-      text-align: left;
-    }
-  }
-
-  ion-list {
-    padding-top: 0px;
   }
 }

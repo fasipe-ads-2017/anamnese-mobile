@@ -11,14 +11,12 @@ import { Injectable } from '@angular/core';
 export class UrlProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello UrlProvider Provider');
   }
 
   /**
    * Retorna a URL base dos serviços
    */
-  get() : string {
-    return 'http://localhost:8080/api/';
+  get(): string {
+    return 'https://us-central1-projeto-fisioterapia-fasipe.cloudfunctions.net';
   }
-
 }
