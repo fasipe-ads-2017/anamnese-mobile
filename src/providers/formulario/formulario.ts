@@ -1,9 +1,10 @@
 import { Paciente } from './../../model/paciente.model';
 import { Formulario } from './../../model/formulario.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UrlProvider } from '../url/url';
 import { Observable } from 'rxjs/Observable';
+import { UsuarioProvider } from '../usuario/usuario';
 
 /*
   Generated class for the FormularioProvider provider.
@@ -16,7 +17,28 @@ export class FormularioProvider {
 
   constructor(
     public http: HttpClient,
-    public url: UrlProvider) {
+    public url: UrlProvider,
+    public usuarioProvider: UsuarioProvider) {
+  }
+
+  /**
+  * Constrói os headers para as consultas HTTP.
+  */
+  buildHttpHeaders(): HttpHeaders {
+    // cria uma instância de Headers
+    let headers = new HttpHeaders();
+    // Adiciona o tipo de conteúdo application/json
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Accept', 'application/json');
+
+    let usuario = this.usuarioProvider.getUsuarioAutenticado();
+
+    // Adiciona o token de autenticacao
+    if (usuario) {
+      headers = headers.set('Authorization', `Bearer ${usuario.token}`);
+    }
+
+    return headers;
   }
 
   /**
@@ -24,7 +46,7 @@ export class FormularioProvider {
    * @param _id Id do formulário
    */
   buscarPorId(_id: string): Observable<Formulario> {
-    return this.http.get<Formulario>(`${this.url.get()}/formulario?_id=${_id}`);
+    return this.http.get<Formulario>(`${this.url.get()}/formulario?_id=${_id}`, { headers: this.buildHttpHeaders() });
   }
 
   /**
@@ -32,7 +54,7 @@ export class FormularioProvider {
    * @param paciente Paciente para buscar
    */
   buscarPorPaciente(paciente: Paciente): Observable<Formulario[]> {
-    return this.http.get<Formulario[]>(`${this.url.get()}/formulario?_idPaciente=${paciente._id}`);
+    return this.http.get<Formulario[]>(`${this.url.get()}/formulario?_idPaciente=${paciente._id}`, { headers: this.buildHttpHeaders() });
   }
 
   /**
@@ -40,6 +62,6 @@ export class FormularioProvider {
    * @param formulario Dados do formulário
    */
   salvarFormulario(formulario: Formulario) {
-    return this.http.post(`${this.url.get()}/formulario`, formulario);
+    return this.http.post(`${this.url.get()}/formulario`, formulario, { headers: this.buildHttpHeaders() });
   }
 }

@@ -1,0 +1,44 @@
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <h2>
+        <ion-icon name="person"></ion-icon> Usuários
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-input #nomeInput [(ngModel)]="nomeUsuario" type="text" name="nomeUsuario" placeholder="Informe o nome do usuário para pesquisar"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="buscar(true)">
+    <ion-icon name="search"></ion-icon>
+    <span>Atualizar</span>
+  </button>
+
+  <button ion-button block color="" item-end icon-start (click)="novo()">
+    <ion-icon name="person-add"></ion-icon>
+    <span>Novo Usuário</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
+
+  <hr />
+
+  <ion-list no-lines>
+    <ion-item *ngFor="let usuario of usuarios">
+      <h2 *ngIf="usuario.ativo">{{ usuario.nome }} </h2>
+      <h2 *ngIf="!usuario.ativo">{{ usuario.nome }} (Inativo) </h2>
+      <p>{{ usuario.email }}</p>
+      <button ion-button clear item-end (click)="editar(usuario)">Editar</button>
+    </ion-item>
+
+    <ion-item *ngIf="hasMore" (click)="buscar()">
+      <p>Mais...</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

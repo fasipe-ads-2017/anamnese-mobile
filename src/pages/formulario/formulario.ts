@@ -5,7 +5,7 @@ import { CurrencyUtils } from './../../utils/currency-utils';
 import { Formulario } from './../../model/formulario.model';
 import { Paciente } from './../../model/paciente.model';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -27,7 +27,8 @@ export class FormularioPage {
     public currencyUtils: CurrencyUtils,
     public formularioProvider: FormularioProvider,
     public mensagem: MensagemProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -47,7 +48,13 @@ export class FormularioPage {
   }
 
   voltar() {
-    this.navCtrl.pop();
+    if (this.isNovo) {
+      this.mensagem.confirmar('Deseja CANCELAR este formulário? Todas as informações serão perdidas!')
+        .then(() => this.navCtrl.pop())
+        .catch(() => undefined);
+    } else {
+      this.navCtrl.pop();
+    }
   }
 
   salvar() {
@@ -66,6 +73,7 @@ export class FormularioPage {
       .subscribe(() => {
         loader.dismiss();
         this.mensagem.showToast('Formulário salvo com sucesso!');
+        this.isNovo = false;
         this.voltar();
       }, (error) => {
         loader.dismiss();

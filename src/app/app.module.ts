@@ -1,3 +1,5 @@
+import { CadastroUsuariosPageModule } from './../pages/cadastro-usuarios/cadastro-usuarios.module';
+import { ListaUsuariosPageModule } from './../pages/lista-usuarios/lista-usuarios.module';
 import { CurrencyUtils } from './../utils/currency-utils';
 import { FormularioPageModule } from './../pages/formulario/formulario.module';
 import { HistoricoPacientePageModule } from './../pages/historico-paciente/historico-paciente.module';
@@ -23,6 +25,7 @@ import { MensagemProvider } from '../providers/mensagem/mensagem';
 import { HttpClientModule } from '@angular/common/http';
 import { CepProvider } from '../providers/cep/cep';
 import { FormularioProvider } from '../providers/formulario/formulario';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { FormularioProvider } from '../providers/formulario/formulario';
     PacienteCadastroPageModule,
     PacientePreviewPageModule,
     HistoricoPacientePageModule,
-    FormularioPageModule
+    FormularioPageModule,
+    ListaUsuariosPageModule,
+    CadastroUsuariosPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,7 +65,8 @@ import { FormularioProvider } from '../providers/formulario/formulario';
     CurrencyUtils,
     MensagemProvider,
     CepProvider,
-    FormularioProvider
+    FormularioProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}

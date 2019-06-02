@@ -1,3 +1,6 @@
+import { ListaUsuariosPage } from './../lista-usuarios/lista-usuarios';
+import { UsuarioProvider } from './../../providers/usuario/usuario';
+import { Usuario } from './../../model/usuario.model';
 import { PacienteCadastroPage } from './../paciente-cadastro/paciente-cadastro';
 import { BuscarPacientePorCpfPage } from './../buscar-paciente-por-cpf/buscar-paciente-por-cpf';
 import { BuscarPacientePorNomePage } from './../buscar-paciente-por-nome/buscar-paciente-por-nome';
@@ -13,14 +16,20 @@ import { HomePage } from './../home/home'
 })
 export class PrincipalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public usuario: Usuario;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public usuarioProvider: UsuarioProvider) {
   }
 
   ionViewDidLoad() {
-
+    this.usuario = this.navParams.get('usuario') || {};
   }
 
   sair() {
+    this.usuarioProvider.removeUsuarioAutenticado();
     this.navCtrl.setRoot(HomePage);
   }
 
@@ -38,6 +47,12 @@ export class PrincipalPage {
 
   novoPaciente() {
     this.navCtrl.push(PacienteCadastroPage);
+  }
+
+  usuarios() {
+    if (this.usuario.administrador) {
+      this.navCtrl.push(ListaUsuariosPage);
+    }
   }
 
 }

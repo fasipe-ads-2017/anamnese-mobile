@@ -5,6 +5,10 @@
     <ion-item>
       <h1>Anamnese Fisioterapia</h1>
     </ion-item>
+
+    <ion-item>
+      <label>{{ usuario?.nome }}</label>
+    </ion-item>
   </ion-list>
 
   <button ion-button block color="primary" item-end icon-start (click)="buscarPorNome()">
@@ -20,6 +24,11 @@
   <button ion-button block color="dark" item-end icon-start (click)="novoPaciente()">
     <ion-icon name="person-add"></ion-icon>
     <span>Novo Paciente</span>
+  </button>
+
+  <button ion-button block color="dark" item-end icon-start (click)="usuarios()" *ngIf="usuario && usuario?.administrador">
+    <ion-icon name="person"></ion-icon>
+    <span>Usuários</span>
   </button>
 
   <button ion-button block color="danger" item-end icon-start (click)="sair()">

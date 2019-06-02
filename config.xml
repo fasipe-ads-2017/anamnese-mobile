@@ -88,6 +88,7 @@
             <string>need photo library access to save pictures there</string>
         </edit-config>
     </platform>
+    <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />

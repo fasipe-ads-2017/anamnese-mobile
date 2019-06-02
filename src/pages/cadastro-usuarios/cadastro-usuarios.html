@@ -1,0 +1,57 @@
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <h2>
+        <ion-icon name="people"></ion-icon> Cadastro do Usuário
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Nome do Usuário</ion-label>
+      <ion-input [(ngModel)]="usuario.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email do Usuário</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Ativo</ion-label>
+      <ion-select [(ngModel)]="usuario.ativo" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="true">Sim</ion-option>
+        <ion-option value="false">Não</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Administrador</ion-label>
+      <ion-select [(ngModel)]="usuario.administrador" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="true">Sim</ion-option>
+        <ion-option value="false">Não</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.senha"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Confirmação da Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.confSenha"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block color="primary" item-end icon-start (click)="salvar()" class="btn-salvar">
+    <ion-icon name="save"></ion-icon>
+    <span>Salvar</span>
+  </button>
+
+  <button ion-button block color="danger" item-end icon-start (click)="voltar()" class="btn-voltar">
+    <ion-icon name="arrow-round-back"></ion-icon>
+    <span>Voltar</span>
+  </button>
+
+</ion-content>

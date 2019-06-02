@@ -1,10 +1,9 @@
 import { Usuario } from './usuario.model';
-import { Paciente } from "./paciente.model";
 
 export class Formulario {
   _id?: string;
   _idPaciente?: string;
-  responsavel?: Usuario;
+  usuario?: Usuario;
   data?: string;
 
   pressaoArterial?: number;

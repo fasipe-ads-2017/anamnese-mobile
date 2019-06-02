@@ -11,7 +11,7 @@
   <ion-list inset>
     <ion-item *ngFor="let formulario of formularios" (click)="visualizar(formulario)">
       <h3>{{ formulario?.data | date: 'dd/MM/yyyy' }}</h3>
-      <p>{{ formulario?.responsavel?.nome }} ({{ formulario?.responsavel?.email }})</p>
+      <p>{{ formulario?.usuario?.nome }} ({{ formulario?.usuario?.email }})</p>
       <ion-icon item-end name="arrow-round-forward"></ion-icon>
     </ion-item>
   </ion-list>

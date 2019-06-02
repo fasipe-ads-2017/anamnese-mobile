@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from 'ionic-angular';
+import { ToastController, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the MensagemProvider provider.
@@ -10,10 +10,29 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class MensagemProvider {
 
-  constructor(public toastCtrl: ToastController) { }
+  constructor(
+    public toastCtrl: ToastController,
+    public alertCtrl: AlertController) { }
 
   errorWithResponse(response: any) {
-    this.showToast(this.buildErrorMessage(response));
+    const message = this.buildErrorMessage(response);
+
+    return new Promise((resolve, reject) => {
+      const confirm = this.alertCtrl.create({
+        title: 'Erro',
+
+        message: message,
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () => resolve()
+          }
+        ]
+      });
+      confirm.present();
+    });
+
+    //this.showToast(this.buildErrorMessage(response));
   }
 
   showToast(message: string) {
@@ -30,23 +49,34 @@ export class MensagemProvider {
     let msg = response.error.message;
 
     if (response.error.errors && Object.keys(response.error.errors).length > 0) {
-
-      let keys = Object.keys(response.error.errors);
-      msg += '<div class="text-left">';
-      msg += '<ul>';
-
-      for (const attributeError of keys) {
-        for (const message of response.error.errors[attributeError]) {
-          msg += '<li>';
-          msg += message;
-          msg += '</li>';
-        }
+      msg += "<ul>"
+      for (const error of response.error.errors) {
+        msg += "<li>" + error + "</li>";
       }
-      msg += '</ul>';
-      msg += '</div>';
+      msg += "</ul>"
     }
 
     return msg;
+  }
+
+  confirmar(message: string, title: string = 'Confirmação') {
+    return new Promise((resolve, reject) => {
+      const confirm = this.alertCtrl.create({
+        title: title,
+        message: message,
+        buttons: [
+          {
+            text: 'Confirmar',
+            handler: () => resolve()
+          },
+          {
+            text: 'Cancelar',
+            handler: () => reject()
+          }
+        ]
+      });
+      confirm.present();
+    });
   }
 
 }

@@ -96,7 +96,9 @@ export class PacienteCadastroPage {
     if (this.paciente._id) {
       this.pacienteProvider
         .atualizar(this.paciente)
-        .subscribe(() => {
+        .subscribe((result) => {
+
+          this.paciente = result.paciente;
 
           // Se mudou a foto, atualiza...
           if (this.hasFotoChanged) {
@@ -122,10 +124,12 @@ export class PacienteCadastroPage {
     } else {
       this.pacienteProvider
         .inserir(this.paciente)
-        .subscribe((data) => {
+        .subscribe((result) => {
 
           // Recebe o Id inserido.
-          this.paciente._id = data._id;
+          // this.paciente._id = data._id;
+
+          this.paciente = result.paciente;
 
           // Atualiza a foto.
           this.pacienteProvider.atualizarFoto(this.paciente, this.foto.foto)
